@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "test";
+}
+
+
+
+<script>
+
+    function g_call(){
+        
+        window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A9130%2Fapi%2FAccount%2Fgmail%2Ftest&state=97lZUxGACCw-tDYqsWIuUh29Ez8_-HC-Fz2JxQRol7k1";
+    }
+    var auth2;
+
+    /**
+     * Initializes the Sign-In client.
+     */
+    var initClient = function () {
+        gapi.load('auth2', function () {
+            /**
+             * Retrieve the singleton for the GoogleAuth library and set up the
+             * client.
+             */
+            auth2 = gapi.auth2.init({
+                client_id: '775211725291-3mbu00fup1m0u72cok0g6m5649jdqgne.apps.googleusercontent.com'
+            });
+
+            // Attach the click handler to the sign-in button
+            auth2.attachClickHandler('btnGoogleLogin', {}, onSuccess, onFailure);
+        });
+    };
+
+    /**
+     * Handle successful sign-ins.
+     */
+    var onSuccess = function (user) {
+        console.log('Signed in as ' + user.getBasicProfile().getName());
+    };
+
+    /**
+     * Handle sign-in failures.
+     */
+    var onFailure = function (error) {
+        console.log(error);
+    };
+</script>
+
+
+<h2>
+
+</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="success">
+            <th>
+                Social Logins
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input type="button" id="btnGoogleLogin"
+             onclick="g_call()"              value="Login with Google" class="btn btn-success" />
+            </td>
+        </tr>
+    </tbody>
+</table>

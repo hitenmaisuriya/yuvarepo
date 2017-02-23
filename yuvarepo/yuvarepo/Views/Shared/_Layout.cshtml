@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css_main.css" rel="stylesheet" />
+   
+   
+   
+   
+    <script>
+        function menu_open() {
+            document.getElementById('menu_bar').style.display = "block";
+            document.getElementById('menu_btn1').style.display = "none";
+            document.getElementById('menu_btn2').style.display = "block";
+        }
+        function menu_close() {
+            document.getElementById('menu_bar').style.display = "none";
+            document.getElementById('menu_btn1').style.display = "block";
+            document.getElementById('menu_btn2').style.display = "none";
+        }
+
+    </script>
+</head>
+<body>
+ <nav class="navbar navbar-default navbar-fixed-top top_bar"  >
+     <div class="row">
+        
+             <i id="menu_btn1" onclick="menu_open()" style="color:#ffffff;font-size:20px;position:fixed;top:20px;left:10px;" class="glyphicon glyphicon-align-left"></i>
+             <i id="menu_btn2" onclick="menu_close()" style="color:#ffffff;font-size:20px;display:none;position:fixed;top:20px;left:10px;" class="glyphicon glyphicon-align-left"></i>
+        
+         <div class="container" style="text-align:center; font-size:25px;color:#ffffff;">
+             
+
+                 <img src="~/img/yuva reporting.png" style="height:60px;" />&nbsp;Yuva Repo
+             
+
+         </div>
+        
+
+     </div>
+ </nav>
+    <div id="menu_bar" class="menu_bar">
+        <br /><br /><br />
+        <ul>
+        <li>
+            <a href="~/home"><i class="fa fa-home"></i> Home</a>
+
+        </li>
+            <li>
+                <a href="~/home"><i class="fa fa-pencil-square-o"></i> Yuva Kendra Entry</a>
+                <a href="~/home"><i class="fa fa-address-book"></i> My Entries</a>
+                <a href="~/home"><i class="fa fa-users"></i> My Yuvan's</a>
+                <a href="~/home"><i class="fa fa-calendar"></i> Events</a>
+
+            </li>
+        </ul>
+
+    </div>
+
+    <div class=""></div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+ 
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<br /><br /><br />
+
+<script>
+var x= window.location.href;
+
+
+
+if (x.includes('#') == true) {
+    window.location = x.replace('#', '?')
+};
+
+
+</script>
+
+@{
+
+
+
+
+    string urls = HttpContext.Current.Request.Url.AbsoluteUri;
+    if (urls.Contains("?"))
+    {
+
+        urls = urls.Substring(urls.IndexOf("?") + 1, urls.Length - urls.IndexOf("?") - 1);
+
+        //  Response.Write(urls);
+
+
+
+        var client = new WebClient();
+        var json = client.DownloadString("https://www.googleapis.com/oauth2/v1/userinfo?" + urls);
+        var search = Json.Decode(json);
+        Response.Redirect("~/login/login?email_id="+ search.email+ "&gmail_id="+ search.id);
+        Response.Write(search.id);
+
+    }
+
+
+
+
+
+
+}
