@@ -81,7 +81,7 @@ namespace yuvarepo.Models
                     bid.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Current.Response.Cookies.Add(bid);
-                    HttpContext.Current.Response.Redirect("http://localhost:64437");
+                    HttpContext.Current.Response.Redirect("~/home");
                 }
             }
             return 1;

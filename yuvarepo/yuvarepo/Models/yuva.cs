@@ -23,15 +23,16 @@ namespace yuvarepo.Models
         {
             c = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["yuva"].ConnectionString);
         }
-        public void ins(string qt)
+        public int ins(string qt)
         {
+            int i = 0;
             if (c.State == ConnectionState.Closed)
             {
                 c.Open();
 
                 cmd = new MySqlCommand(qt, c);
 
-                cmd.ExecuteNonQuery();
+              i=  cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 c.Close();
             }
@@ -40,13 +41,13 @@ namespace yuvarepo.Models
 
                 cmd = new MySqlCommand(qt, c);
 
-                cmd.ExecuteNonQuery();
+              i=  cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 c.Close();
 
             }
 
-
+            return i;
         }
         public DataTable datatables(string qt)
         {

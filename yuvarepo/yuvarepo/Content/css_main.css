@@ -2,7 +2,7 @@
 
 }
 .top_bar{
-    background:#3086ff;
+    background:#2196f3;
 
     font-family: 'Lato', sans-serif;
     z-index:15;
@@ -61,3 +61,73 @@
          background:#d4e6ef;
          color:#013783;
     }
+
+
+
+    
+
+.txt_style
+{
+    border:none !important;
+    background: -webkit-linear-gradient(white 90%,rgb(33, 150, 243) 99% ); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white 90%,rgb(33, 150, 243) 99%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white 90%,rgb(33, 150, 243) 99%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white 90%,rgb(33, 150, 243) 99%); /* Standard syntax */
+    
+    background-size:0px 100%;
+    
+    border-bottom:1px solid rgb(33, 150, 243) !important;
+    background-repeat:no-repeat;
+     
+     border-radius:0px;
+     box-shadow:none;
+}
+
+.txt_style:focus ,input:valid{
+    box-shadow:none !important;
+  outline:none ;
+  -webkit-animation: mymove 5s ; /* Safari 4.0 - 8.0 */
+    animation: mymove 0.3s ease-in ;   
+    background-size:100%;
+}
+
+@-webkit-keyframes mymove {
+    from {
+        background-size : 0% 100%;}
+    to { background-size:100%  100%;}
+}
+
+
+@keyframes mymove {
+     from {
+        background-size : 0% 100%;}
+    to { background-size:100% 100%;}
+}
+
+input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  color: #2196f3;
+  font-size: 11px;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  visibility: visible !important;
+}
+
+.lbl_form{
+    text-align:right;color:rgb(33, 150, 243);font-size:18px;
+    line-height:40px;
+    padding-right:10px;
+}
+.nopaading{
+    padding:0 !important;
+}
+
+
+
+@media only screen and (max-width : 720px) {
+
+    .lbl_form{
+        text-align:left;
+    }
+
+
+}

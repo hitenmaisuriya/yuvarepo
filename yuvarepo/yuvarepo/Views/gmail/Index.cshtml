@@ -19,41 +19,6 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="775211725291-laug2bp1gtefjn6jdaqv6d86gmtfvrho.apps.googleusercontent.com">
-    @*<script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-
-         //   window.location="http://localhost:64437/login/login?email_id=" + profile.getEmail() + "&gmail_id=" + profile.getId() + "";
-            
-            @{ string id="";   }
-            @id=profile.getId();
-            @{ Response.Write("<script>alert(" + id + ")</script>");}
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-        }
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
-
-
-        function listCookies() {
-            var theCookies = document.cookie.split(';');
-            var aString = '';
-            for (var i = 1 ; i <= theCookies.length; i++) {
-                aString += i + ' ' + theCookies[i - 1] + "\n";
-            }
-            return aString;
-        }
-
-    </script>*@
-
-    
     
 </head>
 <body>
@@ -74,7 +39,7 @@
             </div>
 
            <br /><br />
-            <div  class="g-signin2" data-onsuccess="onSignIn"></div>
+          
              @*<div onclick="signOut()">Logout Google</div>*@
         </center>
 
