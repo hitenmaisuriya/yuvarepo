@@ -94,7 +94,7 @@ namespace yuvarepo.Models
                         grp_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
                         name = dt.Rows[i]["name"].ToString(),
                         type = dt.Rows[i]["type"].ToString(),
-                        grp_list =yk_lists(Convert.ToInt32(dt.Rows[i]["id"].ToString())),
+                        yk_list =yk_lists(Convert.ToInt32(dt.Rows[i]["id"].ToString())),
                     }
                     );
             }

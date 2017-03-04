@@ -34,7 +34,7 @@ namespace yuvarepo.Models
                     bid.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Current.Response.Cookies.Add(bid);
-                    HttpContext.Current.Response.Redirect("http://localhost:64437");
+                    HttpContext.Current.Response.Redirect("~/profile");
 
                 }
                 else
@@ -50,7 +50,7 @@ namespace yuvarepo.Models
                         aid.Expires = DateTime.Now.AddDays(30);
 
                         HttpContext.Current.Response.Cookies.Add(aid);
-                        HttpContext.Current.Response.Redirect("http://localhost:64437");
+                        HttpContext.Current.Response.Redirect("http://localhost:9130");
 
                     }
                     else
@@ -63,7 +63,7 @@ namespace yuvarepo.Models
                         id.Expires = DateTime.Now.AddDays(30);
 
                         HttpContext.Current.Response.Cookies.Add(id);
-                        HttpContext.Current.Response.Redirect("http://localhost:64437");
+                        HttpContext.Current.Response.Redirect("http://localhost:9130");
                     }
                 }
 
@@ -81,7 +81,7 @@ namespace yuvarepo.Models
                     bid.Expires = DateTime.Now.AddDays(30);
 
                     HttpContext.Current.Response.Cookies.Add(bid);
-                    HttpContext.Current.Response.Redirect("~/home");
+                    HttpContext.Current.Response.Redirect("~/profile");
                 }
             }
             return 1;
