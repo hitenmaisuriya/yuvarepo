@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    
+
+    <script src="~/angularjs/profile.js"></script>
+    <style>
+     
+    </style>
+</head>
+<body  ng-app="yuva" >
+
+    
+    @{ 
+        //Response.Write("<br/><br/><br/><br/><br/>" + Request.Cookies["bid"].Values.ToString());
+    }
+
+    <br /><br /><br /><br /><br />
+
+
+@model yuvarepo.Models.profile
+@using (Html.BeginForm("profile_ins", "profile", FormMethod.Post))
+{
+
+    <form class="container">
+        <div class="form-group nopaading">
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">First Name  </label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                   
+                    @Html.TextBoxFor(m => m.fname, new { Class = "txt_style form-control", placeholder = "First Name",  required = "required" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Middle Name  </label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                    @Html.TextBoxFor(m => m.mname, new { Class = "txt_style form-control", placeholder = "Middle Name", required = "required" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Last Name  </label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                    @Html.TextBoxFor(m => m.lname, new { Class = "txt_style form-control", placeholder = "Last Name", required = "required" })
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Address</label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                    @Html.TextBoxFor(m => m.address, new { Class = "txt_style form-control", placeholder = "Address", required = "required" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Dob</label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                    @Html.TextBoxFor(m => m.dob, new { Class = "txt_style form-control", placeholder = "Last Name", required = "required",type="date" ,value="dd/dd/yyyy" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Mobile No. 1</label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                    @Html.TextBoxFor(m => m.mob_no1, new { Class = "txt_style form-control", placeholder = "Mobile No 1", required = "required", type = "number" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Mobile No. 2</label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                   @Html.TextBoxFor(m => m.mob_no2, new { Class = "txt_style form-control", placeholder = "Mobile No 2", required = "required", type = "number" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Field</label>
+                </div>
+                    <div class="col-sm-9" ng-controller="field">
+
+                        <div class="col-sm-2">
+                            <select ng-model="sectore" ng-options="s.name as s.name for s in field" ng-change="fill_vk()">
+                                <option value=''>Select Sectore</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <select id="ddl_vk" ng-model="vk" ng-options="v.name as v.name for v in vk_list" style="visibility:hidden;" ng-change="fill_grp()">
+                                <option value=''>Select Video Kendra</option>
+                            </select>
+                            </div>
+                        <div class="col-sm-2">
+                            <select id="ddl_grp" ng-model="grp" ng-options="g.name as g.name for g in grp_list" style="visibility:hidden;" ng-change="fill_yk()">
+                                <option value=''>Select Group</option>
+                            </select>
+                            </div>
+                        <div class="col-sm-3">
+                            <select id="ddl_yk" ng-model="yk" ng-options="y.name as y.name for y in yk_list" style="visibility:hidden;" ng-change="fill_vk()">
+                                <option value=''>Select Yuva Kendra</option>
+                            </select>
+                            </div>
+
+                        </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+                    <label class="input-group-sm control-label nopaading">Mobile No. 2</label>
+                </div>
+                <div class="col-sm-9 nopaading">
+                    @Html.TextBoxFor(m => m.mob_no2, new { Class = "txt_style form-control", placeholder = "Mobile No 2", required = "required", type = "number" })
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+}
+   
+</body>
