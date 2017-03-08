@@ -8,11 +8,25 @@
 
     <script src="~/angularjs/profile.js"></script>
     <style>
-     
+     select{
+         
+         border:none;
+
+         font-size:14px;
+         padding:0 !important;
+         margin:0!important ;
+         
+     }
     </style>
 </head>
 <body  ng-app="yuva" >
-
+    @{ 
+        if (Request.Cookies["bid"] == null && Request.Cookies["aid"] == null && Request.Cookies["id"] == null)
+        {
+            Response.Redirect("~/gmail/Index");
+        }
+      
+    }
     
     @{ 
         //Response.Write("<br/><br/><br/><br/><br/>" + Request.Cookies["bid"].Values.ToString());
@@ -25,6 +39,8 @@
 @using (Html.BeginForm("profile_ins", "profile", FormMethod.Post))
 {
 
+
+
     <form class="container">
         <div class="form-group nopaading">
             <div class="row">
@@ -33,7 +49,7 @@
                 </div>
                 <div class="col-sm-9 nopaading">
                    
-                    @Html.TextBoxFor(m => m.fname, new { Class = "txt_style form-control", placeholder = "First Name",  required = "required" })
+                    @Html.TextBoxFor(m => m.fname, new { Class = "txt_style form-control", placeholder = "First Name",  required = "required", autocomplete = "off" })
                 </div>
             </div>
 
@@ -42,7 +58,7 @@
                     <label class="input-group-sm control-label nopaading">Middle Name  </label>
                 </div>
                 <div class="col-sm-9 nopaading">
-                    @Html.TextBoxFor(m => m.mname, new { Class = "txt_style form-control", placeholder = "Middle Name", required = "required" })
+                    @Html.TextBoxFor(m => m.mname, new { Class = "txt_style form-control", placeholder = "Middle Name", required = "required", autocomplete = "off" })
                 </div>
             </div>
 
@@ -51,7 +67,7 @@
                     <label class="input-group-sm control-label nopaading">Last Name  </label>
                 </div>
                 <div class="col-sm-9 nopaading">
-                    @Html.TextBoxFor(m => m.lname, new { Class = "txt_style form-control", placeholder = "Last Name", required = "required" })
+                    @Html.TextBoxFor(m => m.lname, new { Class = "txt_style form-control", placeholder = "Last Name", required = "required", autocomplete = "off" })
                 </div>
             </div>
         
@@ -60,7 +76,7 @@
                     <label class="input-group-sm control-label nopaading">Address</label>
                 </div>
                 <div class="col-sm-9 nopaading">
-                    @Html.TextBoxFor(m => m.address, new { Class = "txt_style form-control", placeholder = "Address", required = "required" })
+                    @Html.TextBoxFor(m => m.address, new { Class = "txt_style form-control", placeholder = "Address", required = "required", autocomplete = "off" })
                 </div>
             </div>
             <div class="row">
@@ -76,7 +92,7 @@
                     <label class="input-group-sm control-label nopaading">Mobile No. 1</label>
                 </div>
                 <div class="col-sm-9 nopaading">
-                    @Html.TextBoxFor(m => m.mob_no1, new { Class = "txt_style form-control", placeholder = "Mobile No 1", required = "required", type = "number" })
+                    @Html.TextBoxFor(m => m.mob_no1, new { Class = "txt_style form-control", placeholder = "Mobile No 1", required = "required", type = "number", autocomplete = "off" })
                 </div>
             </div>
             <div class="row">
@@ -84,7 +100,7 @@
                     <label class="input-group-sm control-label nopaading">Mobile No. 2</label>
                 </div>
                 <div class="col-sm-9 nopaading">
-                   @Html.TextBoxFor(m => m.mob_no2, new { Class = "txt_style form-control", placeholder = "Mobile No 2", required = "required", type = "number" })
+                   @Html.TextBoxFor(m => m.mob_no2, new { Class = "txt_style form-control", placeholder = "Mobile No 2", required = "required", type = "number", autocomplete = "off" })
                 </div>
             </div>
             <div class="row">
@@ -93,38 +109,47 @@
                 </div>
                     <div class="col-sm-9" ng-controller="field">
 
-                        <div class="col-sm-2">
-                            <select ng-model="sectore" ng-options="s.name as s.name for s in field" ng-change="fill_vk()">
+                        <div class="col-sm-3">
+                            <select ng-model="sectore" class="col-sm-12" ng-options="s.name as s.name for s in field" ng-change="fill_vk()">
                                 <option value=''>Select Sectore</option>
                             </select>
                         </div>
-                        <div class="col-sm-2">
-                            <select id="ddl_vk" ng-model="vk" ng-options="v.name as v.name for v in vk_list" style="visibility:hidden;" ng-change="fill_grp()">
+                        <div class="col-sm-3">
+                            <select id="ddl_vk" ng-model="vk" class="col-sm-12" ng-options="v.name as v.name for v in vk_list" style="visibility:hidden;" ng-change="fill_grp()">
                                 <option value=''>Select Video Kendra</option>
                             </select>
                             </div>
-                        <div class="col-sm-2">
-                            <select id="ddl_grp" ng-model="grp" ng-options="g.name as g.name for g in grp_list" style="visibility:hidden;" ng-change="fill_yk()">
+                        <div class="col-sm-3">
+                            <select id="ddl_grp" ng-model="grp" class="col-sm-12"  ng-options="g.name as g.name for g in grp_list" style="visibility:hidden;" ng-change="fill_yk()">
                                 <option value=''>Select Group</option>
                             </select>
                             </div>
                         <div class="col-sm-3">
-                            <select id="ddl_yk" ng-model="yk" ng-options="y.name as y.name for y in yk_list" style="visibility:hidden;" ng-change="fill_vk()">
+                            <select id="ddl_yk" ng-model="yk" class="col-sm-12"  ng-options="y.name as y.name for y in yk_list" style="visibility:hidden;" ng-change="select_yk()">
                                 <option value=''>Select Yuva Kendra</option>
                             </select>
+                            @Html.TextBoxFor(m => m.yk_id, new { Class = "txt_style form-control", id="yk_id",style="visibility:hidden;" })
                             </div>
 
                         </div>
             </div>
             <div class="row">
                 <div class="col-sm-3 lbl_form nopaading ">
-                    <label class="input-group-sm control-label nopaading">Mobile No. 2</label>
+                   Profile Pic
+                    
                 </div>
                 <div class="col-sm-9 nopaading">
-                    @Html.TextBoxFor(m => m.mob_no2, new { Class = "txt_style form-control", placeholder = "Mobile No 2", required = "required", type = "number" })
+                   
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-sm-3 lbl_form nopaading ">
+
+                </div>
+                <div class="col-sm-9 nopaading">
+                    <input id="Submit1" type="submit" value="submit" />
+                </div>
+            </div>
 
     </form>
 

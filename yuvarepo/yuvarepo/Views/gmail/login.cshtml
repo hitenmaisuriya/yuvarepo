@@ -1,1 +1,10 @@
-﻿
+﻿@{
+    Layout = "";
+    string dates = "11/16/1992";
+    string year = dates.Substring(6, 4);
+
+    string month = dates.Substring(0, 2);
+    string days = dates.Substring(3, 2);
+    string dob = year + "/" + month + "/" + days;
+    Response.Write(dob);
+}

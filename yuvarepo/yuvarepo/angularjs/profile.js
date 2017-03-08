@@ -8,6 +8,7 @@ app.controller('field', function ($scope, $http) {
     $scope.sectore = "";
     $scope.vk = "";
     $scope.grp = "";
+    $scope.yk= "";
     $scope.vk_list = [];
     $scope.grp_list = [];
     
@@ -19,7 +20,7 @@ app.controller('field', function ($scope, $http) {
           for (var i = 0; i < $scope.field.length; i++) {
               
               if ($scope.field[i]["name"] == $scope.sectore) {
-                
+                    
                   document.getElementById('ddl_vk').style.visibility = "visible";
                   $scope.vk_list = $scope.field[i]["vk_list"];
                   
@@ -47,10 +48,19 @@ app.controller('field', function ($scope, $http) {
 
                   document.getElementById('ddl_yk').style.visibility = "visible";
                   $scope.yk_list = $scope.grp_list[i]["yk_list"];
-
+                 
               }
 
           }
+      }
+      $scope.select_yk = function select_yk() {
+          for (var i = 0; i < $scope.yk_list.length; i++) {
+              if ($scope.yk_list[i]["name"] == $scope.yk) {
+                 document.getElementById('yk_id').value = $scope.yk_list[i]["yk_id"];
+                  
+              }
+          }
+
       }
 
       

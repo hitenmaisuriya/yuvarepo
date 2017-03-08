@@ -9,7 +9,7 @@ namespace yuvarepo.Models
 {
     public class fields
     {
-        public string f_id { get; set; }
+        public int f_id { get; set; }
         public string name { get; set; }
         [Required]
         public string type { get; set; }
@@ -45,6 +45,7 @@ namespace yuvarepo.Models
                     new fields
                     {
                         sec_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
+                        f_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
                         name = dt.Rows[i]["name"].ToString(),
                         type = dt.Rows[i]["type"].ToString(),
                         vk_list = vk_lists(Convert.ToInt32(dt.Rows[i]["id"].ToString())),
@@ -68,6 +69,7 @@ namespace yuvarepo.Models
                     {
                         sec_id = Convert.ToInt32(dt.Rows[i]["sec_id"].ToString()),
                         vk_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
+                        f_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
                         name = dt.Rows[i]["name"].ToString(),
                         type = dt.Rows[i]["type"].ToString(),
                         grp_list = grp_lists(Convert.ToInt32(dt.Rows[i]["id"].ToString())),
@@ -92,6 +94,7 @@ namespace yuvarepo.Models
                         sec_id = Convert.ToInt32(dt.Rows[i]["sec_id"].ToString()),
                         vk_id = Convert.ToInt32(dt.Rows[i]["vk_id"].ToString()),
                         grp_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
+                        f_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
                         name = dt.Rows[i]["name"].ToString(),
                         type = dt.Rows[i]["type"].ToString(),
                         yk_list =yk_lists(Convert.ToInt32(dt.Rows[i]["id"].ToString())),
@@ -113,7 +116,12 @@ namespace yuvarepo.Models
                 field_list.Add(
                     new fields
                     {
-                        sec_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
+                        sec_id = Convert.ToInt32(dt.Rows[i]["sec_id"].ToString()),
+                        vk_id = Convert.ToInt32(dt.Rows[i]["vk_id"].ToString()),
+                        grp_id = Convert.ToInt32(dt.Rows[i]["grp_id"].ToString()),
+                        yk_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
+                        f_id = Convert.ToInt32(dt.Rows[i]["id"].ToString()),
+
                         name = dt.Rows[i]["name"].ToString(),
                         type = dt.Rows[i]["type"].ToString(),
                         
