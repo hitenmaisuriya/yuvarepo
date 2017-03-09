@@ -25,7 +25,7 @@
         {
             Response.Redirect("~/gmail/Index");
         }
-      
+
     }
     
     @{ 
@@ -36,7 +36,7 @@
 
 
 @model yuvarepo.Models.profile
-@using (Html.BeginForm("profile_ins", "profile", FormMethod.Post))
+@using (Html.BeginForm("profile_ins", "profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
 
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-sm-9 nopaading">
                    
-                    @Html.TextBoxFor(m => m.fname, new { Class = "txt_style form-control", placeholder = "First Name",  required = "required", autocomplete = "off" })
+                    @Html.TextBoxFor(m => m.fname, new { Class = "txt_style form-control", placeholder = "First Name", required = "required", autocomplete = "off" })
                 </div>
             </div>
 
@@ -135,11 +135,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 lbl_form nopaading ">
-                   Profile Pic
+                    <label class="input-group-sm control-label nopaading">Profile Pic</label>
                     
                 </div>
                 <div class="col-sm-9 nopaading">
-                   
+                    @Html.TextBoxFor(m => m.img, new { Class = "txt_style form-control", placeholder = "Mobile No 2", required = "required", type = "file", autocomplete = "off" })
                 </div>
             </div>
             <div class="row">
