@@ -21,9 +21,15 @@ namespace yuvarepo.Controllers
             var response = fieldes_model.field_ins(obj);
             return Json(response,JsonRequestBehavior.AllowGet);
         }
-        public ActionResult all_fields(fields obj)
+     
+        public ActionResult all_field(fields obj)
         {
             var response = fieldes_model.all_field();
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult find_yk(int yk_id)
+        {
+            var response = fieldes_model.yk(yk_id);
             return Json(response, JsonRequestBehavior.AllowGet);
         }
       

@@ -28,14 +28,13 @@ namespace yuvarepo.Models
         [Required]
         public int mob_no2{ get; set; }
       
-        
+        public string myfield { get; set; }
         public string yk_id { get; set; }
         [Required]
         public string created_on { get; set; }
         public string updated_by { get; set; }
         public string path { get; set; }
-         public HttpPostedFileBase img { get; set; }
-
+        public HttpPostedFileBase img { get; set; }
         private yuva yuva;
         public int profile_ins(profile obj)
         {
@@ -52,6 +51,7 @@ namespace yuvarepo.Models
         public profile profile_select(profile obj)
         {
             yuva = new yuva();
+            fields myfield = new fields();
             profile profile = new profile();
             DataTable dt = yuva.datatables("select * from profile where id='"+obj.id+"'");
             if (dt.Rows.Count > 0)
@@ -66,7 +66,7 @@ namespace yuvarepo.Models
                 profile.mob_no2 = Convert.ToInt32( dt.Rows[0]["mob_no2"].ToString());
                 profile.yk_id = dt.Rows[0]["yk_id"].ToString();
                 profile.path =  dt.Rows[0]["img"].ToString();
-                
+                profile.myfield = myfield.my_field(Convert.ToInt32(dt.Rows[0]["yk_id"].ToString()));
                 
                 
                 
@@ -74,5 +74,44 @@ namespace yuvarepo.Models
             }
             return profile;
         }
+
+        public int apv(int profile_id)
+        {
+            yuva = new yuva();
+            int i=yuva.ins("update profile set isapv='1' where id='"+ profile_id +"' ");
+            return i;
+        }
+        public List<profile> apv_remain()
+        {
+            yuva = new yuva();
+            fields myfield = new fields();
+            List<profile> apv_list = new List<profile>();
+            DataTable dt;
+            dt = yuva.datatables("select * from profile where isapv=0 and fname is not null and fname!=''");
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++) {
+                    apv_list.Add(
+                        new profile
+                        {
+                            id = dt.Rows[i]["id"].ToString(),
+                            fname = dt.Rows[i]["fname"].ToString(),
+                            mname = dt.Rows[i]["mname"].ToString(),
+                            lname = dt.Rows[i]["lname"].ToString(),
+                            address = dt.Rows[i]["address"].ToString(),
+                            dob = dt.Rows[i]["dob"].ToString(),
+                            mob_no1 = Convert.ToInt32( dt.Rows[i]["mob_no1"].ToString()),
+                            yk_id = dt.Rows[i]["yk_id"].ToString(),
+                            myfield= myfield.my_field(Convert.ToInt32(dt.Rows[i]["yk_id"].ToString())),
+
+
+                }
+                        );
+                   
+                }
+            }
+            return apv_list;
+        }
+      
     }
 }
